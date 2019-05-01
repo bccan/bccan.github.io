@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>OLG - Friday Draw</title>
+		<title>OLG - Tuesday Draw</title>
 		<style type="text/css">
 		
 		@font-face {
@@ -11,7 +11,7 @@
 
 		body {
 			margin:0;
-			background-image: url('Images/bg-fri.png');
+			background-image: url('Images/bg-tues.png');
 			width: 2432px;
 			height: 1560px;
 		}
@@ -42,13 +42,26 @@
 		</table>
 		<script type="text/javascript">
 
+		var i = 0;
+
+		var dates = [
+		new Date(2019, 04, 14, 21, 30),
+		new Date(2019, 04, 21, 21, 30),
+		new Date(2019, 04, 28, 21, 30),
+		new Date(2019, 05, 04, 21, 30),
+		new Date(2019, 05, 11, 21, 30)
+		];
 
 			function countdown(){
 				var now = new Date();
-				var eventDate = new Date(now.getFullYear(), 03, 26, 00, 00);
+
+				if(now > dates[i])
+				{
+					i++;
+				}
 
 				var currentTiime = now.getTime();
-				var eventTime = eventDate.getTime();
+				var eventTime = dates[i].getTime();
 
 				var remTime = eventTime - currentTiime;
 
@@ -61,20 +74,33 @@
 				m %= 60;
 				s %= 60;
 
+				d = (d < 10) ? "0" + d : d;
 				h = (h < 10) ? "0" + h : h;
 				m = (m < 10) ? "0" + m : m;
 				s = (s < 10) ? "0" + s : s;
 
-				if (d.toString().length == 1) {
-            d = "0" + d;
-        }
 
+		if(d > 0){
 				document.getElementById("days").textContent = d;
 				document.getElementById("days").innerText = d;
+			}
+			else {
+				document.getElementById("days").textContent = "00";
+				document.getElementById("days").innerText = "00";				
+			}
 
+
+		if(h > 0){
 				document.getElementById("hours").textContent = h;
+			}
+			else
+				document.getElementById("hours").textContent = "00";
+
+		if(m > 0){
 				document.getElementById("minutes").textContent = m;
-				// document.getElementById("seconds").textContent = s;
+			}
+			else
+				document.getElementById("minutes").textContent = "00";
 
 				setTimeout(countdown, 1000);
 			}
