@@ -35,9 +35,9 @@
 	<body>
 		<table class="countdownContainer" style="border-spacing: 220px 40px;">
 			<tr class="info">
-				<td id="days">22</td>
-				<td id="hours">44</td>
-				<td id="minutes">12</td>
+				<td id="days">00</td>
+				<td id="hours">00</td>
+				<td id="minutes">00</td>
 			</tr>
 		</table>
 		<script type="text/javascript">
@@ -45,9 +45,10 @@
 			var i = 0;
 
 			var dates = [
+			new Date(2019, 04, 02, 3, 58),
 			new Date(2019, 04, 17, 21, 30),
 			new Date(2019, 04, 24, 21, 30),
-			new Date(2019, 04, 32, 21, 30),
+			new Date(2019, 04, 31, 21, 30),
 			new Date(2019, 05, 07, 21, 30),
 			new Date(2019, 05, 14, 21, 30)
 			];
@@ -80,28 +81,10 @@
 				m = (m < 10) ? "0" + m : m;
 				s = (s < 10) ? "0" + s : s;
 
-
-		if(d > 0){
 				document.getElementById("days").textContent = d;
 				document.getElementById("days").innerText = d;
-			}
-			else {
-				document.getElementById("days").textContent = "00";
-				document.getElementById("days").innerText = "00";				
-			}
-
-
-		if(h > 0){
 				document.getElementById("hours").textContent = h;
-			}
-			else
-				document.getElementById("hours").textContent = "00";
-
-		if(m > 0){
 				document.getElementById("minutes").textContent = m;
-			}
-			else
-				document.getElementById("minutes").textContent = "00";
 
 				setTimeout(countdown, 1000);
 			}

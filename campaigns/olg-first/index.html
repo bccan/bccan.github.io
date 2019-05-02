@@ -80,28 +80,10 @@
 				m = (m < 10) ? "0" + m : m;
 				s = (s < 10) ? "0" + s : s;
 
-
-		if(d > 0){
 				document.getElementById("days").textContent = d;
 				document.getElementById("days").innerText = d;
-			}
-			else {
-				document.getElementById("days").textContent = "00";
-				document.getElementById("days").innerText = "00";				
-			}
-
-
-		if(h > 0){
 				document.getElementById("hours").textContent = h;
-			}
-			else
-				document.getElementById("hours").textContent = "00";
-
-		if(m > 0){
 				document.getElementById("minutes").textContent = m;
-			}
-			else
-				document.getElementById("minutes").textContent = "00";
 
 				setTimeout(countdown, 1000);
 			}
