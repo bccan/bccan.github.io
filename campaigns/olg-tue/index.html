@@ -32,7 +32,7 @@
 		}
 		</style>
 	</head>
-	<body onload = "getSeconds()">
+	<body>
 		<table class="countdownContainer" style="border-spacing: 220px 40px;">
 			<tr class="info">
 				<td id="days">22</td>
@@ -90,6 +90,9 @@ function tick() {
  document.getElementById("minutes").innerHTML = ( (mins < 10) ? "0" : "" ) + mins;
 
 }
+
+getSeconds();
+
 </script>
 	</body>
 </html>
