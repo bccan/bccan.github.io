@@ -7,11 +7,8 @@ self.addEventListener('install', function(e) {
      return cache.addAll([
        '/',
        '/index.html',
-       '/index.html?homescreen=1',
-       '/?homescreen=1',
-       '/styles/main.css',
-       '/scripts/main.min.js',
-       '/sounds/airhorn.mp3'
+       'Images/bg-1.png',
+       'Fonts/AkzidGroCFFXBdCn.otf'
      ]);
    })
  );
