@@ -96,12 +96,9 @@ function tick() {
 
 countSeconds();
 
-</script>
-
-<script>
 if('serviceWorker' in navigator) {
   navigator.serviceWorker
-           .register('sw.js')
+           .register('sw1.js')
            .then(function() { console.log("Service Worker Registered"); });
 }
 </script>
