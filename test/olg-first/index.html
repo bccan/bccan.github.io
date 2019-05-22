@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>OLG - First Tuesday Draw</title>
+		<style type="text/css">
+		
+		@font-face {
+  font-family: noto;
+  src: url(Fonts/AkzidGroCFFXBdCn.otf);
+}
+
+		body {
+			margin:0;
+			background-image: url('Images/bg-1.png');
+			width: 2432px;
+			height: 1560px;
+		}
+
+		.countdownContainer{
+			position: absolute;;
+			top: 830px;
+			left: 1190px;
+			transform : translateX(-50%) translateY(-50%) rotate(-5deg);
+			text-align: center;
+		}
+
+		.numText {
+			font-size: 29.1em;
+			text-shadow: 9px 9px #0077C8;
+			color: white;
+			font-family: noto;
+			font-style: italic;
+		}
+		</style>
+	</head>
+	<body>
+		<table class="countdownContainer" style="border-spacing: 220px 40px;">
+			<tr class="numText">
+				<td id="days">00</td>
+				<td id="hours">00</td>
+				<td id="minutes">00</td>
+			</tr>
+		</table>
+		<script type="text/javascript">
+
+var todayDay;
+var secTime;
+var ticker;
+ 
+function countSeconds() {
+ var dateNow = new Date();
+ var dayTarget = 2 ; //2 = Tuesday
+ var dateTarget = new Date(dateNow.getFullYear(),dateNow.getMonth(),dateNow.getDate(),22,30,0); //22, 30 = 22:30 = 10:30pm
+ 
+ var timeNow = dateNow.getTime(); //getting the current time
+ var timeTarget = dateTarget.getTime(); //getting the target time to count down to
+ var variance = parseInt((timeTarget - timeNow)/1000); //calculating the difference between the now and target time
+ if (variance > 0) { todayDay = dayTarget - dateNow.getDay() }
+ else { todayDay = dayTarget - dateNow.getDay() -1 } //post-countdown time
+ if (todayDay < 0) { todayDay += 7; } //if after countdown time, switch to next week
+ if (variance <= 0) { variance += (86400 * 7) }
+ timerStart (variance);
+}
+ 
+function timerStart(seconds) { //starts the ticker, runs it every 1 second (1000ms)
+ secTime = parseInt(seconds);
+ ticker = setInterval("tick()",1000);
+ tick();
+}
+ 
+function tick() { 
+ var seconds = secTime;
+ if (seconds>0) {
+  secTime--;
+ }
+ else {
+  clearInterval(ticker);
+  countSeconds(); //start over
+ }
+ 
+ var days = Math.floor(seconds/86400);
+ seconds %= 86400;
+
+ var hours= Math.floor(seconds/3600);
+ seconds %= 3600;
+ 
+ var mins = Math.floor(seconds/60);
+ seconds %= 60;
+ 
+ //update the time display, send countdown values to HTML
+ document.getElementById("days").innerHTML = ((todayDay < 10 ) ? "0" : "" ) + todayDay;
+ document.getElementById("hours").innerHTML = ((hours < 10 ) ? "0" : "" ) + hours;
+ document.getElementById("minutes").innerHTML = ((mins < 10) ? "0" : "" ) + mins;
+
+}
+
+countSeconds();
+
+</script>
+	</body>
+</html>
